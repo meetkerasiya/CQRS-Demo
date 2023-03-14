@@ -20,5 +20,12 @@ namespace MediatRDemoAPI.Controllers
             var people = _mediator.Send(new GetPersonListQuery());
             return Ok(people.Result);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetPeopleById(int id)
+        {
+            var person=_mediator.Send(new GetPersonByIdQuery(id));
+            return Ok(person.Result);
+        }
     }
 }
