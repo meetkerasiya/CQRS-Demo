@@ -1,3 +1,5 @@
+using DemoLibrary.Commands;
+using DemoLibrary.Models;
 using DemoLibrary.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +28,14 @@ namespace MediatRDemoAPI.Controllers
         {
             var person=_mediator.Send(new GetPersonByIdQuery(id));
             return Ok(person.Result);
+        }
+
+        [HttpPost]
+        public IActionResult AddPerson([FromBody] PersonModel value)
+        {
+            var model=new InsertPersonCommand(value.FirstName, value.LastName);
+            var result= _mediator.Send(model);
+            return Ok(result.Result);
         }
     }
 }

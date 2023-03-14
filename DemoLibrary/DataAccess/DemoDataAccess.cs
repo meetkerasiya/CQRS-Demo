@@ -12,7 +12,7 @@ namespace DemoLibrary.DataAccess
             people.Add(new PersonModel { Id = 30, FirstName = "Krupal", LastName = "vasani" });
         }
 
-        public List<PersonModel> GEtPeople()
+        public List<PersonModel> GetPeople()
         {
             return people;
         }
